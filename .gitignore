@@ -1,0 +1,10 @@
+/Debug/
+*.xml
+*.md5
+*.ini
+**/*.ini
+doc/
+!/doc/*.odg
+*.json
+/Release/
+*.exe
