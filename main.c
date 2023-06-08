@@ -21,14 +21,14 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
-float temp =    0.1;
-float temp2 =   1.1;
-float temp3 =   1.1;
-float temp4 =   1.1;
-float temp5 =   1.1;
-float temp6 =   1.1;
-float temp7 =   1.1;
-float temp8 =   1.1;
+float temp1 =   1.1;
+float temp2 =   2.1;
+float temp3 =   3.1;
+float temp4 =   4.1;
+float temp5 =   5.1;
+float temp6 =   6.1;
+float temp7 =   7.1;
+float temp8 =   8.1;
 
 static char Temperaturas[36];
 static char temps[32]; //18
@@ -51,12 +51,11 @@ void Timer0IntHandler(void)
     // Update the interrupt status on the display.
     //
     MAP_IntMasterDisable();
-    //sprintf(Temperaturas, "%.2f %.2f %.2f %.2f %.2f %.2f %.2f\0", temp, temp2, temp3, temp4, temp5, temp6, temp7);
-   // UARTprintf("%s\n", Temperaturas);
-    sprintf (temps, "%f %f %f %f %f %f", temp, temp2, temp3, temp4, temp5, temp7);
-   // sprintf (temps, "%f %f %f", temp, temp2, temp3);
-    UARTprintf("%s\n", temps);
-    //UARTprintf("Hello, world!\n");
+        
+    sprintf (temps, "%.2f, %.2f, %.2f, %.2f, %.2f, %.2f, %.2f", temp1,temp2,temp3,temp4,temp5,temp6,temp7);
+    
+    UARTprintf("Temperatures: %s\n", temps);
+    
     MAP_IntMasterEnable();
 }
 
@@ -141,7 +140,7 @@ int main(void)
 
      while(1){
         SysCtlDelay(1*(SysCtlClockGet() / 100 / 1000 ));
-        temp = sensorTemp_getTemp(SENSOR_TEMP_ADDR1);
+        temp1 = sensorTemp_getTemp(SENSOR_TEMP_ADDR1);
         temp2 = sensorTemp_getTemp(SENSOR_TEMP_ADDR2);
         temp3 = sensorTemp_getTemp(SENSOR_TEMP_ADDR3);
         temp4 = sensorTemp_getTemp(SENSOR_TEMP_ADDR5);
@@ -149,16 +148,16 @@ int main(void)
         temp6 = sensorTemp_getTemp(SENSOR_TEMP_ADDR7);
         temp7 = sensorTemp_getTemp(SENSOR_TEMP_ADDR8);
 
-        Temperaturas [1] = temp;
-        Temperaturas [2] = temp2;
-        Temperaturas [3] = temp3;
-        Temperaturas [4] = temp4;
-        Temperaturas [5] = temp5;
-        Temperaturas [6] = temp6;
-        Temperaturas [7] = temp7;
+        Temperaturas[1] = temp1;
+        Temperaturas[2] = temp2;
+        Temperaturas[3] = temp3;
+        Temperaturas[4] = temp4;
+        Temperaturas[5] = temp5;
+        Temperaturas[6] = temp6;
+        Temperaturas[7] = temp7;
 
        // receiveTemp(SENSOR_TEMP_ADDR1, data);
-       // sprintf(Temperaturas, "%.2f %.2f %.2f %.2f %.2f %.2f %.2f\0", temp, temp2, temp3, temp4, temp5, temp6, temp7);
+       // sprintf(Temperaturas, "%.2f %.2f %.2f %.2f %.2f %.2f %.2f\0", temp1, temp2, temp3, temp4, temp5, temp6, temp7);
     }
 //*/
 }
