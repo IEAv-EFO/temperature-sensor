@@ -3,12 +3,12 @@
 
 #define CLOCK               80000000
 
-//*****************************************************************************
-//
-// Timer Setup
-//
-//*****************************************************************************
-void TimerInit( void );
+/**
+ * @brief Timer Setup
+ *
+ * Sets a fixed frequency to transmit the UART messages
+*/
+ void TimerInit(float freq_hz);
 
 
 #endif

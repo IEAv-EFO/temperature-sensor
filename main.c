@@ -116,8 +116,10 @@ int main(void)
     //
     // Initialize the UART and write status.
     //
+    ConfigureUART();
 
-   ConfigureUART();
+    // Fixed frequency to transmit via UART
+    TimerInit(1.0);
 
    TimerInit();
 

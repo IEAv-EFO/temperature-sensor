@@ -16,42 +16,25 @@
 #include "driverlib/timer.h"
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
-//#include "definitions.h"
 
-#define FREQ_HZ 1
 
-//*****************************************************************************
-//
-// Timer Setup
-//
-//*****************************************************************************
-void TimerInit( void )
-{
+void TimerInit(float freq_hz){
 
         // Enable the peripherals used by this example.
-        //
         MAP_SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
 
-        //
         // Enable processor interrupts.
-        //
         MAP_IntMasterEnable();
 
-        //
         // Configure the two 32-bit periodic timers.
-        //
         MAP_TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC);
-        MAP_TimerLoadSet(TIMER0_BASE, TIMER_A, (unsigned int)(MAP_SysCtlClockGet()/FREQ_HZ));
+        MAP_TimerLoadSet(TIMER0_BASE, TIMER_A, (unsigned int)(MAP_SysCtlClockGet()/freq_hz));
 
-        //
         // Setup the interrupts for the timer timeouts.
-        //
         MAP_IntEnable(INT_TIMER0A);
         MAP_TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
-        //
         // Enable the timers.
-        //
         MAP_TimerEnable(TIMER0_BASE, TIMER_A);
 }
 
