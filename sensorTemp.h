@@ -2,7 +2,6 @@
  * sensorTemp.h
  *
  *  Created on:    22 de jul de 2022
- *  Last revision: 25 jul 2022
  *  Author: GiacomoAD
  */
 
@@ -16,6 +15,7 @@
 #define TEMP_REG_ADDR 0x05
 #define CONF_REG_ADDR 0x01
 
+// The address for the MCP9808 temperature sensor is â€˜0011,A2,A1,A0â€™ 
 #define SENSOR_TEMP_ADDR1 0b0011000
 #define SENSOR_TEMP_ADDR2 0b0011001
 #define SENSOR_TEMP_ADDR3 0b0011010
@@ -25,11 +25,14 @@
 #define SENSOR_TEMP_ADDR7 0b0011110
 #define SENSOR_TEMP_ADDR8 0b0011111
 
-                            //Resolution    SampleTime
-#define RESOLUTION_1   0x00 //0.5 °C        30 ms
-#define RESOLUTION_2   0x01 //0.25 °C       65 ms
-#define RESOLUTION_3   0x02 //0.125 °C      130 ms
-#define RESOLUTION_4   0x03 //0.0625 °C     250 ms
+//resolution: 0.5 C  sample time: 30 ms
+#define RESOLUTION_1   0x00
+//resolution: 0.25 C sample time: 65 ms
+#define RESOLUTION_2   0x01
+//resolution: 0.125 C sample time: 130 ms
+#define RESOLUTION_3   0x02
+//resolution: 0.0625 C sample time: 250 ms
+#define RESOLUTION_4   0x03 
 
                                     // SCL  SDA
 #define I2C0    SYSCTL_PERIPH_I2C0  // PB2  PB3
