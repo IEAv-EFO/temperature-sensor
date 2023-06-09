@@ -36,35 +36,35 @@ void initI2C(){
       // SysCtlDelay(500);
 
     //enable I2C module 0
-    //SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C0);
-       SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
+    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C0);
+    //    SysCtlPeripheralEnable(SYSCTL_PERIPH_I2C1);
 
     //reset module
-   // SysCtlPeripheralReset(SYSCTL_PERIPH_I2C0);
-       SysCtlPeripheralReset(SYSCTL_PERIPH_I2C1);
+   SysCtlPeripheralReset(SYSCTL_PERIPH_I2C0);
+    //    SysCtlPeripheralReset(SYSCTL_PERIPH_I2C1);
 
     //enable GPIO peripheral that contains I2C 0
-   // SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+   SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
+    // SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
 
     // Configure the pin muxing for I2C0 functions on port B2 and B3.
-   // GPIOPinConfigure(GPIO_PB2_I2C0SCL);
-  //  GPIOPinConfigure(GPIO_PB3_I2C0SDA);
-    GPIOPinConfigure(GPIO_PA6_I2C1SCL);
-    GPIOPinConfigure(GPIO_PA7_I2C1SDA);
+   GPIOPinConfigure(GPIO_PB2_I2C0SCL);
+   GPIOPinConfigure(GPIO_PB3_I2C0SDA);
+    // GPIOPinConfigure(GPIO_PA6_I2C1SCL);
+    // GPIOPinConfigure(GPIO_PA7_I2C1SDA);
 
     // Select the I2C function for these pins.
-    //GPIOPinTypeI2CSCL(GPIO_PORTB_BASE, GPIO_PIN_2);
-   // GPIOPinTypeI2C(GPIO_PORTB_BASE, GPIO_PIN_3);
-    GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
-    GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
+   GPIOPinTypeI2CSCL(GPIO_PORTB_BASE, GPIO_PIN_2);
+   GPIOPinTypeI2C(GPIO_PORTB_BASE, GPIO_PIN_3);
+    // GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
+    // GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
 
     // Enable and initialize the I2C0 master module.  Use the system clock for
     // the I2C0 module.  The last parameter sets the I2C data transfer rate.
     // If false the data rate is set to 100kbps and if true the data rate will
     // be set to 400kbps.
-   // I2CMasterInitExpClk(I2C0_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
-    I2CMasterInitExpClk(I2C1_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
+   I2CMasterInitExpClk(I2C0_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
+    // I2CMasterInitExpClk(I2C1_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
 
      }
 
@@ -73,35 +73,35 @@ void initI2CChannel(unsigned char i2cChannel){
     switch(i2cChannel){
         case 0:
             //enable I2C module
-            //SysCtlPeripheralEnable(I2C0);
-            SysCtlPeripheralEnable(I2C1);
+            SysCtlPeripheralEnable(I2C0);
+            // SysCtlPeripheralEnable(I2C1);
 
             //reset module
-            //SysCtlPeripheralReset(I2C0);
-            SysCtlPeripheralReset(I2C1);
+            SysCtlPeripheralReset(I2C0);
+            // SysCtlPeripheralReset(I2C1);
 
             //enable GPIO peripheral that contains I2C module
            // SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOB);
             SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
 
             // Configure the pin muxing for I2C functions on respective ports
-           // GPIOPinConfigure(GPIO_PB2_I2C0SCL);
-           // GPIOPinConfigure(GPIO_PB3_I2C0SDA);
-            GPIOPinConfigure(GPIO_PA6_I2C1SCL);
-            GPIOPinConfigure(GPIO_PA7_I2C1SDA);
+           GPIOPinConfigure(GPIO_PB2_I2C0SCL);
+           GPIOPinConfigure(GPIO_PB3_I2C0SDA);
+            // GPIOPinConfigure(GPIO_PA6_I2C1SCL);
+            // GPIOPinConfigure(GPIO_PA7_I2C1SDA);
 
             // Select the I2C function for these pins.
-           // GPIOPinTypeI2CSCL(GPIO_PORTB_BASE, GPIO_PIN_2);
-           // GPIOPinTypeI2C(GPIO_PORTB_BASE, GPIO_PIN_3);
-            GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
-            GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
+           GPIOPinTypeI2CSCL(GPIO_PORTB_BASE, GPIO_PIN_2);
+           GPIOPinTypeI2C(GPIO_PORTB_BASE, GPIO_PIN_3);
+            // GPIOPinTypeI2CSCL(GPIO_PORTA_BASE, GPIO_PIN_6);
+            // GPIOPinTypeI2C(GPIO_PORTA_BASE, GPIO_PIN_7);
 
             // Enable and initialize the I2C master module.  Use the system clock for
             // the I2C module.  The last parameter sets the I2C data transfer rate.
             // If false the data rate is set to 100kbps and if true the data rate will
             // be set to 400kbps.
-          // I2CMasterInitExpClk(I2C0_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
-           I2CMasterInitExpClk(I2C1_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
+          I2CMasterInitExpClk(I2C0_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
+        //    I2CMasterInitExpClk(I2C1_BASE, SysCtlClockGet(), DEFAULT_I2C_CLK);
 
             break;
         case 1:
@@ -168,8 +168,8 @@ void I2CSend(uint8_t slave_addr, uint8_t num_of_args, ...)
     unsigned char i = 1;
     // Tell the master module what address it will place on the bus when
     // communicating with the slave.
-    //I2CMasterSlaveAddrSet(I2C0_BASE, slave_addr, false);
-    I2CMasterSlaveAddrSet(I2C1_BASE, slave_addr, false);
+    I2CMasterSlaveAddrSet(I2C0_BASE, slave_addr, false);
+    // I2CMasterSlaveAddrSet(I2C1_BASE, slave_addr, false);
     //stores list of variable number of arguments
     va_list vargs;
 
