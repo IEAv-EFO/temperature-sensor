@@ -18,7 +18,7 @@
 #include "utils/uartstdio.h"
 //#include "definitions.h"
 
-#define FREQ_HZ 100
+#define FREQ_HZ 1
 
 //*****************************************************************************
 //
