@@ -159,8 +159,6 @@ int main(void)
         Temperaturas [7] = temp7;
         Temperaturas [8] = temp8;
 
-       // receiveTemp(SENSOR_TEMP_ADDR1, data);
-       // sprintf(Temperaturas, "%.2f %.2f %.2f %.2f %.2f %.2f %.2f\0", temp1, temp2, temp3, temp4, temp5, temp6, temp7);
     }
 //*/
 }
