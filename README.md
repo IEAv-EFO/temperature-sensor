@@ -12,5 +12,8 @@ i2c Pins:
 - Vcc   -> 2.7 to 5.5 V
 - Gnd
 
+![image](/post-processing/front_panel.png)
+
+
 Note: When the i2c is working all the disconnected sensors return -0.06 celsius measurement.
 When communication fails all values are 0.00, and when it fails stronger it shows the initialization value.
