@@ -40,8 +40,11 @@
 #define I2C2    SYSCTL_PERIPH_I2C2  // PE4  PE5
 #define I2C3    SYSCTL_PERIPH_I2C3  // PD0  PD1
 
-
-void initI2C();
+/**
+ * @brief Initializes the i2c communication chosen as input in the function
+ * 
+ * @param i2cChannel 
+ */
 void initI2CChannel(unsigned char i2cChannel);
 
 void I2CSend(uint8_t slave_addr, uint8_t num_of_args, ...);

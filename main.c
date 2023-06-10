@@ -21,6 +21,12 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
+// rate UART transmission in Hz
+float freq_hz = 1;
+// i2c chosen channel [0-3]
+unsigned char i2cChannel = 2;   // channels 0 and 1 not working
+
+// initializing temperature values
 float temp1 =   1.1;
 float temp2 =   2.1;
 float temp3 =   3.1;
@@ -39,8 +45,7 @@ static char temps[32]; //18
 // The interrupt handler for the first timer interrupt.
 //
 //*****************************************************************************
-void Timer0IntHandler(void)
-{
+void Timer0IntHandler(void){
 
     //
     // Clear the timer interrupt.
@@ -64,9 +69,7 @@ void Timer0IntHandler(void)
 // Configure the UART and its pins.  This must be called before UARTprintf().
 //
 //*****************************************************************************
-void
-ConfigureUART(void)
-{
+void ConfigureUART(void){
     //
     // Enable the GPIO Peripheral used by the UART.
     //
@@ -110,23 +113,16 @@ int main(void)
     //
     // Set the clocking to run directly from the crystal.
     //
-    MAP_SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN |
-                       SYSCTL_XTAL_16MHZ);
+    MAP_SysCtlClockSet(SYSCTL_SYSDIV_1 | SYSCTL_USE_OSC | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ);
 
-    //
     // Initialize the UART and write status.
-    //
     ConfigureUART();
 
     // Fixed frequency to transmit via UART
-    TimerInit(1.0);
+    TimerInit(freq_hz);
 
-   TimerInit();
-
-   initI2C();
-
-
-
+    // Initialize chosen i2c communication
+    initI2CChannel(i2cChannel);
 
     sensorTemp_config_res(SENSOR_TEMP_ADDR1, RESOLUTION_4);
     sensorTemp_config_res(SENSOR_TEMP_ADDR2, RESOLUTION_4);
@@ -136,7 +132,6 @@ int main(void)
     sensorTemp_config_res(SENSOR_TEMP_ADDR6, RESOLUTION_4);
     sensorTemp_config_res(SENSOR_TEMP_ADDR7, RESOLUTION_4);
     sensorTemp_config_res(SENSOR_TEMP_ADDR8, RESOLUTION_4);
-
 
     SysCtlDelay(1000*(SysCtlClockGet() / 10 / 1000));
     I2CSend(SENSOR_TEMP_ADDR1, 1, TEMP_REG_ADDR);
