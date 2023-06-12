@@ -9,6 +9,14 @@ Resolution +0.5°C, +0.25°C, +0.125°C, +0.0625°C.
 i2c Pins:
 - SCL   -> PA6
 - SDA   -> PA7
+  
+|     | SCL | SDA |
+|-----|-----|-----|
+|I2C0 | PB2 | PB3 |
+|I2C1 | PA6 | PA7 |  
+|I2C2 | PE4 | PE5 |  
+|I2C3 | PD0 | PD1 |  
+
 - Vcc   -> 2.7 to 5.5 V
 - Gnd
 
