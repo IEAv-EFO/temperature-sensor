@@ -21,10 +21,17 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
-// rate UART transmission in Hz
-float freq_hz = 1;
-// i2c chosen channel [0-3]
-unsigned char i2cChannel = 2;   // channels 0 and 1 not working
+/* i2c chosen channel [0-3]
+        SCL	SDA
+I2C0	PB2	PB3
+I2C1	PA6	PA7
+I2C2	PE4	PE5
+I2C3	PD0	PD1
+
+# warning: arm_stnk channels 0 and 1 not working
+*/ 
+unsigned char i2cChannel = 3;
+float freq_hz = 1;  // rate UART transmission in Hz
 
 // initializing temperature values
 float temp1 =   1.1;
